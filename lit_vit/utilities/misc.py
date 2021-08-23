@@ -43,7 +43,7 @@ def ret_args(ret_parser=False):
 
     args.run_name = '{}_{}_is{}_bs{}_{}lr{}_pt{}_seed{}'.format(
     args.dataset_name, args.model_name, args.image_size, args.batch_size, 
-    args.optimizer, args.learning_rate, args.pretrained_checkpoint, args.seed)
+    args.optimizer, args.learning_rate, args.pretrained, args.seed)
 
     if args.deit_recipe:
         ''' taken from DeiT paper

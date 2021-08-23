@@ -61,7 +61,7 @@ class VisionTransformer(nn.Module):
         self.configuration.image_size = args.image_size
         
         self.model = ViT(self.configuration, name=args.model_name, 
-            pretrained=args.pretrained_checkpoint, load_fc_layer=not(args.interm_features_fc),
+            pretrained=args.pretrained, load_fc_layer=not(args.interm_features_fc),
             ret_interm_repr=args.interm_features_fc, conv_patching=args.conv_patching)
 
         if args.interm_features_fc:
@@ -77,7 +77,7 @@ class VisionTransformer(nn.Module):
         if hasattr(self, 'inter_class_head'):
             features, interm_features = self.model(images, mask)
         else:
-            logits = self.model(images, text)
+            logits = self.model(images, mask)
 
         if hasattr(self, 'inter_class_head'):
             interm_features = torch.stack(interm_features, dim=-1)

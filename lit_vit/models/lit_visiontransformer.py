@@ -85,7 +85,7 @@ class LitVisionTransformer(pl.LightningModule):
         
         parser.add_argument('--model_name', choices=['B_16', 'B_32', 'L_16', 'L_32'], default='B_16',
                         help='Which model architecture to use')
-        parser.add_argument('--pretrained_checkpoint',action='store_true',
+        parser.add_argument('--pretrained',action='store_true',
                             help='Loads pretrained model if available')
         parser.add_argument('--checkpoint_path', type=str, default=None)     
         parser.add_argument('--transfer_learning', action='store_true',
