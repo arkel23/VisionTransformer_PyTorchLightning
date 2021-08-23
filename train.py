@@ -12,7 +12,7 @@ def train_main(init=True):
     trainer.fit(model, dm)
 
     dm.setup('test')
-    trainer.test(test_dataloaders=dm.test_dataloader())
+    trainer.test(dm)
 
     if init:
         wandb.finish() 
