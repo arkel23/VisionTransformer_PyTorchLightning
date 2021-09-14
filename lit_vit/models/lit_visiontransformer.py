@@ -83,8 +83,10 @@ class LitVisionTransformer(pl.LightningModule):
         parser.add_argument('--weight_decay', type=float, default=0.00)
         parser.add_argument('--warmup_steps', type=int, default=1000, help='Warmup steps for LR scheduler.')
         
-        parser.add_argument('--model_name', choices=['B_16', 'B_32', 'L_16', 'L_32'], default='B_16',
-                        help='Which model architecture to use')
+        parser.add_argument('--model_name',
+                        choices=['Ti_4', 'Ti_8', 'Ti_16', 'Ti_32', 'S_4', 'S_8', 'S_16', 'S_32',
+                                 'B_4', 'B_8', 'B_16', 'B_32', 'L_16', 'L_32', 'B_16_in1k'],
+                        default='B_16_in1k', help='Which model architecture to use')
         parser.add_argument('--pretrained',action='store_true',
                             help='Loads pretrained model if available')
         parser.add_argument('--checkpoint_path', type=str, default=None)     

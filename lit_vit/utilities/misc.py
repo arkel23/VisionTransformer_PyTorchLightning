@@ -41,9 +41,9 @@ def ret_args(ret_parser=False):
         return parser
     args = parser.parse_args()
 
-    args.run_name = '{}_{}_is{}_bs{}_{}lr{}_pt{}_seed{}'.format(
+    args.run_name = '{}_{}_is{}_bs{}_{}lr{}wd{}_pt{}_seed{}'.format(
     args.dataset_name, args.model_name, args.image_size, args.batch_size, 
-    args.optimizer, args.learning_rate, args.pretrained, args.seed)
+    args.optimizer, args.learning_rate, args.weight_decay, args.pretrained, args.seed)
 
     if args.deit_recipe:
         ''' taken from DeiT paper
