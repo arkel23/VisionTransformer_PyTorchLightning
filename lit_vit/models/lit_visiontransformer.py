@@ -13,6 +13,7 @@ class LitVisionTransformer(pl.LightningModule):
         self.args = args
         
         self.criterion = torch.nn.CrossEntropyLoss()
+        self.train_acc = torchmetrics.Accuracy()
         self.val_acc = torchmetrics.Accuracy()
         self.test_acc = torchmetrics.Accuracy()
 
@@ -32,7 +33,10 @@ class LitVisionTransformer(pl.LightningModule):
         
         loss = self.criterion(y_hat, y)
         self.log('train_loss', loss, on_epoch=True, on_step=True)
-        
+
+        self.train_acc(y_hat.softmax(dim=1), y)
+        self.log('train_acc', self.train_acc, on_epoch=True, on_step=False)
+                
         curr_lr = self.optimizers().param_groups[0]['lr']
         self.log('learning_rate', curr_lr, on_epoch=False, on_step=True)
         
